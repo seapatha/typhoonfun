@@ -1,0 +1,4 @@
+clusters/typhoonfun/*
+*.swp
+*.swo
+.terraform
