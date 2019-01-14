@@ -1,4 +1,6 @@
-clusters/typhoonfun/*
+terraform/clusters/*
 *.swp
 *.swo
 .terraform
+*.tfstate
+terraform/apply.log

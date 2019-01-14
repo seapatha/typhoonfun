@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: typhoonfun
+  namespace: typhoonfun
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: typhoonfun
+subjects:
+  - kind: ServiceAccount
+    namespace: typhoonfun
+    name: default

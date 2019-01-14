@@ -3,7 +3,7 @@ ssh_authorized_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDrHMCPBSgimxzV4b33gS
 region = "us-west-2"
 worker_count = 2
 worker_type = "t2.micro"
-shared_credentials_file="/home/sean/.aws/credentials"
+shared_credentials_file="/Users/sean/.aws/credentials"
 cluster_name = "typhoonfun"
 /* You can get your existing Route 53 managed zones and their IDs by running `aws route53 list-hosted-zones` */
 dns_zone = "columnaf.com"
