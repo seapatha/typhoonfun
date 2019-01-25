@@ -1,10 +1,20 @@
 # TyphoonFun
 
-TyphoonFun uses Typhoon and Terraform to orchestrate a basic multinode Kubernetes service that is exposed to the Internet on AWS. 
+TyphoonFun helps you orchestrate microservice delivery in cloud Kubernetes clusters from start to finish.
 
-## Configure your workstation to access your AWS cloud
+Components Overview
+  * AWS orchestration 
+  * Terraform and Typhoon and TyphoonFun
+    * Terraform orchestrates cloud computing infrastructure
+    * Typhoon provisions Kubernetes clusters on cloud computing infrastructure 
+    * TyphoonFun bootstraps Typhoon with a scaleable, simple configuration file
+  * Kubernetes
+    * Execution of the terraform environment provides $KUBECONFIG
+    * kubectl can then apply provided kubernetes manifests
 
-You need to ensure that you have a ~/.aws/credentials that looks like this:
+## AWS workstation configuration
+
+You need to ensure that you have an `~/.aws/credentials` file that looks like this:
 ```
 [default]
 aws_access_key_id = [shorter thing in all caps and numerics]
@@ -29,13 +39,13 @@ This is accomplished through creating a new user in Amazon IAM after you have cr
 1. `cd` into the terraform directory.
 2. Configure the terraform.tfvars file.
 3. Ensure that ssh-agent is running with the ssh key you have configured in Step 2.  
-4. Execute `terraform init` to download plugins specified in your configuration.
+4. Execute `terraform init` to download plugins specified in the Terraform configuration.
 5. Execute `terraform validate` to ensure the source configuration is correct.
-6. Execute `terraform plan` to validate the behavior of the terraform code.
-7. Execute `terraform apply` to commit the terraform plan to infrastructure. 
+6. Execute `terraform plan` to validate the behavior of the Terraform code.
+7. Execute `terraform apply` to commit the Terraform plan to infrastructure. 
 8. You may now be charged if your usage exceeds the free tier.  Run `terraform destroy` to destroy everything terraform has done.
 
-## Kubectl
+## Kubernetes
 
 ### Configure kubectl
 
@@ -47,4 +57,6 @@ $ TFFROOT=$(git rev-parse --show-toplevel)
 $ export KUBECONFIG=${TFFROOT}/terraform/clusters/$(grep cluster_name ${TFFROOT}/terraform/terraform.tfvars |awk '{print $3}' |sed s#\"##g)/auth/kubeconfig
 ```
 
+### Apply Kubernetes manifests
+1. Change into the typhoonfun project directory
 
